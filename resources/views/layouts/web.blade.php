@@ -56,9 +56,9 @@
         </main>
         <footer class="mt-auto small bg-dark text-light shadow-lg-inverse py-2">
             <div class="container small d-flex justify-content-between">
-                <span>Integração com sistemas de pagamentos</span>
+                <span>2021 - {{ now()->year }} {{ config('app.name') }}&reg;</span>
                 <div class="dropdown">
-                    <a class="pointer" data-toggle="dropdown">Admin</a>
+                    <a class="text-light pointer" data-toggle="dropdown">Admin</a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">Login</a>
                         <a class="dropdown-item" href="#">Dashboard</a>
@@ -68,6 +68,7 @@
                 </div>
             </div>
         </footer>
+        <vue-snotify></vue-snotify>
     </div>
     @stack('scripts')
 </body>
