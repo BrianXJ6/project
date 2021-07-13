@@ -10,6 +10,9 @@ require('bootstrap');
 window.axios = require('axios');
 window.axios.defaults.headers.common['Accept'] = 'application/json';
 
+// Global plugins
+import './global/plugins/snotify';
+
 // Vue auto components
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
