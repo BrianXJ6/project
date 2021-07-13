@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Http\Controllers;
+
+// use Illuminate\Http\Request;
+
+class WebController extends Controller {
+
+    // public function __construct() {
+    //     $this->middleware('auth');
+    // }
+
+    // View da página Home
+    public function home() {
+        $header = [
+            'subtitle'    => 'Início',
+            'description' => 'da página Início',
+            'keywords'    => 'da página Início',
+        ];
+        return view('web.home', compact('header'));
+    }
+}
