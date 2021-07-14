@@ -1,5 +1,45 @@
 // Typography
 @import "typography";
 
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
 // Snotify
 @import "~vue-snotify/styles/material";
+
+* {
+    outline: none !important;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+a {
+    transition: color 0.25s;
+}
+
+textarea {
+    resize: none !important;
+}
+
+.sticky-bottom {
+    position: sticky;
+    bottom: 0;
+    z-index: 1020;
+}
+
+.shadow-inverse {
+    box-shadow: 0 -0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+.shadow-sm-inverse {
+    box-shadow: 0 -0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}
+
+.shadow-lg-inverse {
+    box-shadow: 0 -1rem 3rem rgb(0 0 0 / 18%) !important;
+}

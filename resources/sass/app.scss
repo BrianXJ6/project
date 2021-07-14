@@ -1,8 +1,25 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Body
+$body-bg: #f8fafc;
 
-// Variables
-@import 'variables';
+// Global =============================================================================================================
+@import "global";
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// Navbar =============================================================================================================
+// dropdowns
+.dropdown-item {
+    transition: color 0.25s, background-color 0.25s;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #16181b;
+    text-decoration: none;
+    background: #e9ecef linear-gradient(180deg, #eceff1, #e9ecef) repeat-x;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background: $dark linear-gradient(180deg, #52585d, $dark) repeat-x;
+}
