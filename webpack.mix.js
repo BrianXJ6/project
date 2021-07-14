@@ -3,8 +3,8 @@ require('laravel-mix-imgmin');
 
 mix.extract()
     .vue()
-    .js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
+    .js('resources/js/web/web.js', 'public/js')
+    .sass('resources/sass/web.scss', 'public/css')
     .imgmin({ input: 'resources/images', output: 'images' });
 
 if (mix.inProduction()) mix.version();

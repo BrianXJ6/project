@@ -19,8 +19,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ mix('js/manifest.js') }}" defer></script>
     <script src="{{ mix('js/vendor.js') }}" defer></script>
-    <script src="{{ mix('js/app.js') }}" defer></script>
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <script src="{{ mix('js/web.js') }}" defer></script>
+    <link href="{{ mix('css/web.css') }}" rel="stylesheet">
 </head>
 <body class="h-100">
     <div id="app" class="h-100 d-flex flex-column">
