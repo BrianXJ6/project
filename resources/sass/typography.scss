@@ -1,0 +1,62 @@
+// Font Main ============================================================================================================
+// Open Sans
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 300;
+    src: local("OpenSans-Light.ttf"), url("./../fonts/Open_Sans/OpenSans-Light.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    src: local("OpenSans-Regular.ttf"), url("./../fonts/Open_Sans/OpenSans-Regular.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 600;
+    src: local("OpenSans-SemiBold.ttf"), url("./../fonts/Open_Sans/OpenSans-SemiBold.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    src: local("OpenSans-Bold.ttf"), url("./../fonts/Open_Sans/OpenSans-Bold.ttf");
+}
+@font-face {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 800;
+    src: local("OpenSans-ExtraBold.ttf"), url("./../fonts/Open_Sans/OpenSans-ExtraBold.ttf");
+}
+
+// Luckiest Guy
+@font-face {
+    font-family: "Luckiest Guy";
+    font-style: normal;
+    font-weight: 400;
+    src: local("LuckiestGuy-Regular.ttf"), url("./../fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf");
+}
+
+// Font Awesome =========================================================================================================
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
+// Font Configs =========================================================================================================
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "Luckiest Guy", cursive;
+}
