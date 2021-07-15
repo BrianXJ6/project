@@ -39,11 +39,14 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle pointer" data-toggle="dropdown">Cliente</a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Login</a>
+                                    @guest('user')
+                                    <a class="dropdown-item" href="{{ route('user.login') }}">Login</a>
                                     <a class="dropdown-item" href="#">Seja cliente</a>
+                                    @else
                                     <a class="dropdown-item" href="#">Dashboard</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Sair</a>
+                                    @endguest
                                 </div>
                             </li>
                         </ul>
