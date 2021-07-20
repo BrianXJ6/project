@@ -13,9 +13,10 @@ class LoginController extends Controller {
     protected $redirectToUser  = RouteServiceProvider::USER;
     protected $redirectToAdmin = RouteServiceProvider::ADMIN;
 
-    // public function __construct() {
-    //     $this->middleware('guest')->except('logout');
-    // }
+    public function __construct() {
+        $this->middleware('guest:user')->only('userShowLoginForm', 'userWebLogin');
+        $this->middleware('auth:user')->only('userWebLogout');
+    }
 
     // Tela de login para cliente
     public function userShowLoginForm() {
@@ -37,6 +38,7 @@ class LoginController extends Controller {
         ]);
     }
 
+    // Processo geral para logar usuários
     protected function login(Request $request, String $guard) {
         $request->validate([
             'email'    => ['required', 'string'],
@@ -49,13 +51,16 @@ class LoginController extends Controller {
         return $guard->user();
     }
 
-    public function logout(Request $request) {
-        $this->guard()->logout();
-        $request->session()->invalidate();
+    // Processo de logout para user
+    public function userWebLogout(Request $request) {
+        $guard = $this->guard('user');
+        $guard->user()->invalidateApiToken();
+        $guard->logout();
         $request->session()->regenerateToken();
         return response()->json([], 204);
     }
 
+    // Guard
     protected function guard(String $name) {
         return Auth::guard($name);
     }

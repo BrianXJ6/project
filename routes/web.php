@@ -7,8 +7,17 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('', [WebController::class, 'home'])->name('home');
 
 Route::prefix('cliente')->group(function () {
-    Route::get('login', [LoginController::class, 'userShowLoginForm'])->name('user.login');
-    Route::post('login', [LoginController::class, 'userWebLogin']);
+    // Guest
+    Route::middleware(['guest:user'])->group(function () {
+        Route::get('login', [LoginController::class, 'userShowLoginForm'])->name('user.login');
+        Route::post('login', [LoginController::class, 'userWebLogin']);
+    });
+
+    // Auth
+    Route::middleware(['auth:user'])->group(function () {
+        Route::get('dashboard/{any?}', [WebController::class, 'userDashboard'])->where('any', '.*')->name('user.dashboard');
+        Route::post('logout', [LoginController::class, 'userWebLogout'])->name('user.logout');
+    });
 });
 
 /*

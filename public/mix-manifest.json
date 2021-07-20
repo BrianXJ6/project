@@ -1,6 +1,8 @@
 {
     "/js/web.js": "/js/web.js",
+    "/js/user.js": "/js/user.js",
     "/js/manifest.js": "/js/manifest.js",
+    "/css/user.css": "/css/user.css",
     "/css/web.css": "/css/web.css",
     "/js/vendor.js": "/js/vendor.js"
 }

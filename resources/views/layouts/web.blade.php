@@ -1,3 +1,4 @@
+@inject('rtService', 'App\Services\RouteService')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
 <head>
@@ -43,9 +44,10 @@
                                     <a class="dropdown-item" href="{{ route('user.login') }}">Login</a>
                                     <a class="dropdown-item" href="#">Seja cliente</a>
                                     @else
-                                    <a class="dropdown-item" href="#">Dashboard</a>
+                                    <a class="dropdown-item" href="{{ route('user.dashboard') }}">Dashboard</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Sair</a>
+                                    <user-logout class="dropdown-item"
+                                        :laravel-routes="{{ json_encode($rtService->laravelRoutes()) }}"></user-logout>
                                     @endguest
                                 </div>
                             </li>

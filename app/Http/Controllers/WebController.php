@@ -6,9 +6,9 @@ namespace App\Http\Controllers;
 
 class WebController extends Controller {
 
-    // public function __construct() {
-    //     $this->middleware('auth');
-    // }
+    public function __construct() {
+        $this->middleware('auth:user')->only('userDashboard');
+    }
 
     // View da página Home
     public function home() {
@@ -18,5 +18,13 @@ class WebController extends Controller {
             'keywords'    => 'da página Início',
         ];
         return view('web.home', compact('header'));
+    }
+
+    // View para dashboard Cliente
+    public function userDashboard() {
+        return view('layouts.app')->with([
+            'environment' => 'user',
+            'subtitle'    => 'Dashboard para cliente'
+        ]);
     }
 }
