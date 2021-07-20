@@ -10,7 +10,7 @@
         <div class="form-group">
             <label for="userLogin.password" class="m-0 d-flex justify-content-between align-items-baseline">
                 <span>Senha</span>
-                <a href="#" class="small text-muted" tabindex="-1" title="Solicitar recuperação de senha">Esqueci a senha</a>
+                <a :href="laravelRoutes['password.forgot']" class="small text-muted" tabindex="-1" title="Solicitar recuperação de senha">Esqueci a senha</a>
             </label>
             <input id="userLogin.password" class="form-control form-control-sm" type="password" placeholder="********" required minlength="8" v-model="userLogin.password">
         </div>

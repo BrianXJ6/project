@@ -16,6 +16,10 @@ class User extends Authenticatable implements MustVerifyEmail {
     protected $hidden   = ['password', 'remember_token', 'api_token'];
     protected $casts    = ['email_verified_at' => 'datetime'];
 
+    // Passwords
+    public function sendPasswordResetNotification($token) {
+        $this->notify(new ResetPassword($token));
+    }
     // Tokens
     public function generateApiToken($save = true) {
         $plainToken = Str::random(80);
