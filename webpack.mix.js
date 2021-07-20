@@ -5,8 +5,10 @@ mix.extract()
     .vue()
     .js('resources/js/web/web.js', 'public/js')
     .js('resources/js/user/user.js', 'public/js')
+    .js('resources/js/admin/admin.js', 'public/js')
     .sass('resources/sass/web.scss', 'public/css')
     .sass('resources/sass/user.scss', 'public/css')
+    .sass('resources/sass/admin.scss', 'public/css')
     .imgmin({ input: 'resources/images', output: 'images' });
 
 if (mix.inProduction()) mix.version();

@@ -1,5 +1,6 @@
 // Body
-$body-bg: #f8fafc;
+$body-bg: #1a202c;
+$body-color: #f8f9fa;
 
 // Global =============================================================================================================
 @import "global";
@@ -25,5 +26,5 @@ $body-bg: #f8fafc;
 .dropdown-item:active {
     color: #fff;
     text-decoration: none;
-    background: $dark linear-gradient(180deg, #52585d, $dark) repeat-x;
+    background: $success linear-gradient(180deg, #55ca87, $success) repeat-x;
 }

@@ -14,8 +14,13 @@ class LoginController extends Controller {
     protected $redirectToAdmin = RouteServiceProvider::ADMIN;
 
     public function __construct() {
+        // User middlewares
         $this->middleware('guest:user')->only('userShowLoginForm', 'userWebLogin');
         $this->middleware('auth:user')->only('userWebLogout');
+
+        // Admin middlewares
+        $this->middleware('guest:admin')->only('adminShowLoginForm', 'adminWebLogin');
+        $this->middleware('auth:admin')->only('adminWebLogout');
     }
 
     // Tela de login para cliente
@@ -28,13 +33,33 @@ class LoginController extends Controller {
         return view('web.user.login', compact('header'));
     }
 
-    // Processo de login para usuários na WEB
+    // Processo de login para clietnes na WEB
     public function userWebLogin(Request $request) {
         $user = $this->login($request, 'user');
         return response()->json([
             'user'     => $user,
             'token'    => $user->generateApiToken(),
             'redirect' => redirect()->intended($this->redirectToUser)->getTargetUrl(),
+        ]);
+    }
+
+    // Tela de login para admins
+    public function adminShowLoginForm() {
+        $header = [
+            'subtitle'    => 'Login',
+            'description' => 'da página Login',
+            'keywords'    => 'da página Login',
+        ];
+        return view('web.admin.login', compact('header'));
+    }
+
+    // Processo de login para admins na WEB
+    public function adminWebLogin(Request $request) {
+        $user = $this->login($request, 'admin');
+        return response()->json([
+            'user'     => $user,
+            'token'    => $user->generateApiToken(),
+            'redirect' => redirect()->intended($this->redirectToAdmin)->getTargetUrl(),
         ]);
     }
 
@@ -45,15 +70,23 @@ class LoginController extends Controller {
             'password' => ['required', 'string'],
         ]);
         $guard = $this->guard($guard);
-        if (!$guard->attempt($request->only('email', 'password')))
-            throw ValidationException::withMessages(['email' => [trans('auth.failed')]]);
+        if (!$guard->attempt($request->only('email', 'password'))) throw ValidationException::withMessages(['email' => [trans('auth.failed')]]);
         $request->session()->regenerate();
         return $guard->user();
     }
 
-    // Processo de logout para user
+    // Processo de logout para clientes na WEB
     public function userWebLogout(Request $request) {
         $guard = $this->guard('user');
+        $guard->user()->invalidateApiToken();
+        $guard->logout();
+        $request->session()->regenerateToken();
+        return response()->json([], 204);
+    }
+
+    // Processo de logout para admins na WEB
+    public function adminWebLogout(Request $request) {
+        $guard = $this->guard('admin');
         $guard->user()->invalidateApiToken();
         $guard->logout();
         $request->session()->regenerateToken();

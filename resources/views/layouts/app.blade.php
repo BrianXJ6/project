@@ -15,7 +15,7 @@
 <body class="h-100">
     <div id="app" class="h-100">
         <router-view class="h-100 d-flex flex-column" :laravel-routes="{{ json_encode($rtService->laravelRoutes()) }}"
-            :logged="{{ Auth::guard('user')->user() }}"></router-view>
+            :logged="{{ Auth::guard($environment)->user() }}"></router-view>
         <vue-snotify></vue-snotify>
     </div>
 </body>

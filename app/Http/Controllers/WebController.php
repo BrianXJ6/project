@@ -8,6 +8,7 @@ class WebController extends Controller {
 
     public function __construct() {
         $this->middleware('auth:user')->only('userDashboard');
+        $this->middleware('auth:admin')->only('adminDashboard');
     }
 
     // View da página Home
@@ -25,6 +26,14 @@ class WebController extends Controller {
         return view('layouts.app')->with([
             'environment' => 'user',
             'subtitle'    => 'Dashboard para cliente'
+        ]);
+    }
+
+    // View para dashboard Admin
+    public function adminDashboard() {
+        return view('layouts.app')->with([
+            'environment' => 'admin',
+            'subtitle'    => 'Dashboard para Admin'
         ]);
     }
 }

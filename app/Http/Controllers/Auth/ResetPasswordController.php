@@ -58,8 +58,8 @@ class ResetPasswordController extends Controller {
         $this->token    = $user->generateApiToken();
         $this->redirect = redirect()->intended($isAdmin ? RouteServiceProvider::ADMIN : RouteServiceProvider::USER)->getTargetUrl();
         event(new PasswordReset($user));
-        if ($isAdmin) $this->guard('admin')->login($user);
-        else $this->guard('user')->login($user);
+        if ($isAdmin) $guard = $this->guard('admin')->login($user);
+        else $guard = $this->guard('user')->login($user);
     }
 
     // Bronker para resertar senha
@@ -68,7 +68,7 @@ class ResetPasswordController extends Controller {
     }
 
     // Guard
-    protected function guard() {
-        return Auth::guard();
+    protected function guard(String $guard) {
+        return Auth::guard($guard);
     }
 }

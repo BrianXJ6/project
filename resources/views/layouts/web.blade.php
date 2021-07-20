@@ -63,13 +63,20 @@
             <div class="container small d-flex justify-content-between">
                 <span>2021 - {{ now()->year }} {{ config('app.name') }}&reg;</span>
                 <div class="dropdown">
+                    @if (url()->current() != route('admin.login'))
                     <a class="text-light pointer" data-toggle="dropdown">Admin</a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Login</a>
-                        <a class="dropdown-item" href="#">Dashboard</a>
+                        @guest('admin')
+                        <admin-login :laravel-routes="{{ json_encode($rtService->laravelRoutes()) }}" class="p-3"
+                            style="width:290px"></admin-login>
+                        @else
+                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Sair</a>
+                        <admin-logout class="dropdown-item"
+                            :laravel-routes="{{ json_encode($rtService->laravelRoutes()) }}"></admin-logout>
+                        @endguest
                     </div>
+                    @endif
                 </div>
             </div>
         </footer>

@@ -23,6 +23,20 @@ Route::prefix('cliente')->group(function () {
     });
 });
 
+// Rotas para admin.
+Route::prefix('admin')->group(function () {
+    // Guest
+    Route::middleware(['guest:admin'])->group(function () {
+        Route::get('login', [LoginController::class, 'adminShowLoginForm'])->name('admin.login');
+        Route::post('login', [LoginController::class, 'adminWebLogin']);
+    });
+    // Auth
+    Route::middleware(['auth:admin'])->group(function () {
+        Route::get('dashboard/{any?}', [WebController::class, 'adminDashboard'])->where('any', '.*')->name('admin.dashboard');
+        Route::post('logout', [LoginController::class, 'adminWebLogout'])->name('admin.logout');
+    });
+});
+
 // Rotas auxiliares
 Route::prefix('auth')->group(function () {
     Route::get('senha/redefinir', [ForgotPasswordController::class, 'showLinkPassForgotForm'])->name('password.forgot');

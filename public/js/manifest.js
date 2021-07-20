@@ -103,7 +103,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_user_views_layouts_App_vue":1,"resources_js_user_views_pages_home_Home_vue":1,"resources_js_user_views_pages_profile_Profile_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_user_views_layouts_App_vue":1,"resources_js_user_views_pages_home_Home_vue":1,"resources_js_user_views_pages_profile_Profile_vue":1,"resources_js_admin_views_layouts_App_vue":1,"resources_js_admin_views_pages_home_Home_vue":1,"resources_js_admin_views_pages_profile_Profile_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
@@ -206,6 +206,7 @@
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/manifest": 0,
+/******/ 			"css/admin": 0,
 /******/ 			"css/user": 0,
 /******/ 			"css/web": 0
 /******/ 		};
@@ -219,7 +220,7 @@
 /******/ 					if(installedChunkData) {
 /******/ 						promises.push(installedChunkData[2]);
 /******/ 					} else {
-/******/ 						if(!/^(css\/(user|web)|\/js\/manifest)$/.test(chunkId)) {
+/******/ 						if(!/^(css\/(admin|user|web)|\/js\/manifest)$/.test(chunkId)) {
 /******/ 							// setup Promise in chunk cache
 /******/ 							var promise = new Promise((resolve, reject) => (installedChunkData = installedChunks[chunkId] = [resolve, reject]));
 /******/ 							promises.push(installedChunkData[2] = promise);
