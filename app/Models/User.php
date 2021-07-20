@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -16,10 +17,16 @@ class User extends Authenticatable implements MustVerifyEmail {
     protected $hidden   = ['password', 'remember_token', 'api_token'];
     protected $casts    = ['email_verified_at' => 'datetime'];
 
+    // Relationship
+    public function admin() {
+        return $this->hasOne(UserAdmin::class);
+    }
+
     // Passwords
     public function sendPasswordResetNotification($token) {
         $this->notify(new ResetPassword($token));
     }
+
     // Tokens
     public function generateApiToken($save = true) {
         $plainToken = Str::random(80);
